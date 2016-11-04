@@ -144,6 +144,7 @@ TARGETS = \
 	m32c-elf \
 	m32r-elf \
 	m68hc11-elf \
+	m68k-aout \
 	m68k-elf \
 	m68k-linux \
 	m68k-rtems \
