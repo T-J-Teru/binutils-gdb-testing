@@ -68,6 +68,7 @@ TARGETS = \
 	all-64 \
 	all-64,32 \
 	alpha-dec-vms \
+	alpha-elf \
 	alpha-freebsd6 \
 	alpha-linux-gnu \
 	alpha-linuxecoff \
@@ -247,6 +248,7 @@ TARGETS = \
 	ppc-lynxos \
 	rl78-elf \
 	rs6000-aix4.3.3 \
+	rs6000-elf \
 	rx-elf \
 	s390-linux \
 	s390-linux-gnu \
@@ -359,55 +361,21 @@ BROKEN_TARGETS = \
 # For the following targets we define:
 #       CONFIGURE_${target}=--target=${target} --disable-gdb
 TARGETS_WITHOUT_GDB = \
-	aarch64-elf \
 	aarch64-linux-gnu \
-	aarch64-rtems \
-	aarch64_be-elf \
 	alpha-freebsd6 \
 	alpha-linux-gnu \
 	alpha-linuxecoff \
 	alpha-unknown-freebsd4.7 \
 	alpha-unknown-osf4.0 \
-	am33_2.0-linux \
-	arc-elf \
-	arc-linux-uclibc \
-	arceb-elf \
-	arm-eabi \
 	arm-linux-androideabi \
 	arm-linuxeabi \
-	arm-nacl \
 	arm-netbsdelf \
 	arm-none-eabi \
-	arm-nto \
-	arm-pe \
-	arm-rtems \
-	arm-symbianelf \
-	arm-uclinux_eabi \
 	arm-vxworks \
 	arm-wince-pe \
-	armeb-eabi \
-	avr-elf \
-	bfin-elf \
 	bfin-linux-uclibc \
-	bfin-rtems \
 	bfin-uclinux \
-	c6x-elf \
-	c6x-uclinux \
-	cr16-elf \
-	cris-axis-linux-gnu \
-	cris-elf \
-	cris-linux \
-	crisv32-elf \
-	crx-elf \
 	d10v-elf \
-	dlx-elf \
-	epiphany-elf \
-	fido-elf \
-	frv-elf \
-	frv-linux \
-	ft32-elf \
-	h8300-elf \
-	h8300-rtems \
 	hppa-linux \
 	hppa-linux-gnu \
 	hppa64-linux \
@@ -421,118 +389,43 @@ TARGETS_WITHOUT_GDB = \
 	i686-apple-darwin \
 	i686-apple-darwin10 \
 	i686-apple-darwin9 \
-	i686-dragonfly \
-	i686-elf \
 	i686-freebsd6 \
 	i686-kfreebsd-gnu \
 	i686-kopensolaris-gnu \
-	i686-nacl \
 	i686-nto-qnx \
 	i686-pc-beos \
 	i686-pc-cygwin \
-	i686-pc-elf \
 	i686-pc-linux-gnu \
+	i686-pc-linux-gnu,gold \
 	i686-pc-mingw32 \
-	i686-pe \
-	i686-rtems \
 	i686-solaris2.10 \
-	ia64-freebsd5 \
-	ia64-freebsd6 \
-	ia64-hp-vms \
 	ia64-linux \
-	ia64-netbsd \
-	ia64-vms \
-	ia64-x-freebsd5 \
-	ip2k-elf \
-	iq2000-elf \
-	lm32-elf \
-	lm32-rtems \
-	lm32-rtems4.10 \
-	lm32-uclinux \
-	m32c-elf \
-	m32c-rtems \
-	m32r-elf \
-	m68hc11-elf \
-	m68k-elf \
 	m68k-linux \
-	m68k-rtems \
-	m68k-uclinux \
-	mcore-elf \
-	mcore-pe \
-	mep-elf \
-	metag-elf \
-	microblaze-elf \
-	microblaze-linux \
 	mingw32-pe \
-	mips-elf \
 	mips-linux \
-	mips-rtems \
 	mips-sgi-irix6 \
-	mips64-elf \
 	mips64-linux \
 	mips64el-st-linux-gnu \
 	mips64octeon-linux \
-	mips64orion-elf \
-	mips64vr-elf \
-	mips64vrel-elf \
-	mipsel-elf \
 	mipsel-linux-gnu \
-	mipsisa32-elfoabi \
 	mipsisa32el-linux \
 	mipsisa32r2-linux-gnu \
-	mipsisa64-elfoabi \
 	mipsisa64r2-linux \
-	mipsisa64r2-sde-elf \
-	mipsisa64r2el-elf \
-	mipsisa64sb1-elf \
-	mipsisa64sr71k-elf \
-	mipstx39-elf \
-	mn10200-elf \
-	mn10300-elf \
-	moxie-elf \
-	moxie-rtems \
 	ms1-elf \
-	msp430-elf \
 	mt-elf \
-	nds32be-elf \
-	nds32le-elf \
-	nios2-elf \
-	nios2-linux \
-	nios2-linux-gnu \
-	nios2-rtems \
-	pdp11-dec-aout \
-	pj-elf \
-	powerpc-eabi \
-	powerpc-eabialtivec \
-	powerpc-eabisim \
-	powerpc-eabisimaltivec \
-	powerpc-eabispe \
 	powerpc-freebsd6 \
 	powerpc-ibm-aix5.2.0 \
 	powerpc-linux \
 	powerpc-linux_paired \
 	powerpc-linux_spe \
-	powerpc-lynxos \
-	powerpc-nto \
-	powerpc-rtems \
 	powerpc-wrs-vxworks \
-	powerpc-xilinx-eabi \
 	powerpc64-linux \
 	powerpc64-linux_altivec \
-	powerpc64le-elf \
-	powerpcle-eabi \
-	powerpcle-eabisim \
-	powerpcle-elf \
-	ppc-elf \
-	ppc-lynxos \
-	rl78-elf \
 	rs6000-aix4.3.3 \
-	rx-elf \
 	s390-linux \
 	s390-linux-gnu \
 	s390x-linux-gnu \
 	score-elf \
-	sh-elf \
 	sh-linux \
 	sh-nto \
 	sh-pe \
@@ -541,40 +434,16 @@ TARGETS_WITHOUT_GDB = \
 	shl-unknown-netbsdelf1.6T \
 	shle-linux \
 	sparc-aout \
-	sparc-elf \
-	sparc-leon-elf \
-	sparc-rtems \
-	sparc64-elf \
 	sparc64-freebsd6 \
 	sparc64-netbsd \
-	sparc64-rtems \
 	spu-elf \
-	tic30-unknown-aout \
-	tic30-unknown-coff \
-	tic4x-coff \
-	tic6x-elf \
 	tilegx-linux \
 	tilegx-linux-gnu \
-	tilepro-linux \
-	v850-elf \
-	v850-rtems \
-	v850e-elf \
-	vax-linux-gnu \
 	vax-netbsdelf \
-	visium-elf \
 	x86_64-freebsd6 \
 	x86_64-pc-cygwin \
-	x86_64-rtems \
 	x86_64-solaris2 \
-	xc16x-elf \
-	xgate-elf \
-	xstormy16-elf \
-	xtensa-elf \
-	xtensa-linux \
-	z80-coff \
-	z8k-coff
-
-
+	xtensa-linux
 
 $(foreach target,$(TARGETS_WITHOUT_GDB),$(eval CONFIGURE_${target}=--target=${target} --disable-gdb))
 
