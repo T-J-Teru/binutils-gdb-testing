@@ -532,7 +532,7 @@ define get_target_name =
 endef
 
 define format_cflags =
-  $(if $(1),"CFLAGS=$(1)","")
+  $(if $(1),"CFLAGS=$(1)",)
 endef
 
 define get_cflags =
@@ -540,7 +540,7 @@ define get_cflags =
 endef
 
 define get_configure_flags =
-  $(if $(CONFIGURE_$(1)),$(CONFIGURE_$(1)),--target=$(call get_target_name,$(1)))
+  $(if $(CONFIGURE_$(1)),$(CONFIGURE_$(1)),--target=$(strip $(call get_target_name,$(1))))
 endef
 
 define CONFIGURE_CORE =
@@ -549,15 +549,17 @@ define CONFIGURE_CORE =
 	  $(call get_cflags,$*)
 endef
 
+define do_configure =
+  $(if $(CONFIGURE_CORE_$*), $(CONFIGURE_CORE_$*), $(CONFIGURE_CORE))
+endef
+
 .PHONY: $(CONFIGURE_TARGETS)
 $(CONFIGURE_TARGETS) : TARGET_CONFIGURE_% : $(BUILD_DIR)/%/configure.ok
 
 $(BUILD_DIR)/%/configure.ok : | $(BUILD_DIR)/%
 	@echo -e "Starting configure of $*"
 	@+cd $(BUILD_DIR)/$* && \
-	    $(if $(CONFIGURE_CORE_$*),\
-                       $(CONFIGURE_CORE_$*),\
-                       $(CONFIGURE_CORE)) >$(BUILD_DIR)/$*/configure.log 2>&1 && \
+	    $(call do_configure) >$(BUILD_DIR)/$*/configure.log 2>&1 && \
 	  (echo -e "Finished configure of $*: $(COLOUR_GREEN)Success$(COLOUR_NONE)" && \
 	      echo "$*: Success" > $(BUILD_DIR)/$*/configure.sum && \
               date > $(BUILD_DIR)/$*/configure.ok) || \
@@ -572,15 +574,17 @@ define BUILD_CORE =
 	$(MAKE)
 endef
 
+define do_build =
+  $(if $(BUILD_CORE_$*), $(BUILD_CORE_$*), $(BUILD_CORE))
+endef
+
 .PHONY: $(BUILD_TARGETS)
 $(BUILD_TARGETS) : TARGET_BUILD_% : $(BUILD_DIR)/%/build.ok
 
 $(BUILD_DIR)/%/build.ok : $(BUILD_DIR)/%/configure.ok
 	@echo "Starting build of $*"
 	@+cd $(BUILD_DIR)/$* && \
-	    $(if $(BUILD_CORE_$*),\
-                       $(BUILD_CORE_$*),\
-                       $(BUILD_CORE)) >$(BUILD_DIR)/$*/build.log 2>&1 && \
+	    $(call do_build) >$(BUILD_DIR)/$*/build.log 2>&1 && \
 	  (echo -e "Finished build of $*: $(COLOUR_GREEN)Success$(COLOUR_NONE)" && \
 	      echo "$*: Success" > $(BUILD_DIR)/$*/build.sum && \
               date > $(BUILD_DIR)/$*/build.ok) || \
