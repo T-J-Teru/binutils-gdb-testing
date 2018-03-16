@@ -557,7 +557,7 @@ $(BUILD_DIR)/%/configure.ok : | $(BUILD_DIR)/%
 	@cd $(BUILD_DIR)/$* && \
 	    $(if $(CONFIGURE_CORE_$*),\
                        $(CONFIGURE_CORE_$*),\
-                       $(CONFIGURE_CORE)) &>$(BUILD_DIR)/$*/configure.log && \
+                       $(CONFIGURE_CORE)) >$(BUILD_DIR)/$*/configure.log 2>&1 && \
 	  (echo -e "Finished configure of $*: $(COLOUR_GREEN)Success$(COLOUR_NONE)" && \
 	      echo "$*: Success" > $(BUILD_DIR)/$*/configure.sum && \
               date > $(BUILD_DIR)/$*/configure.ok) || \
@@ -580,7 +580,7 @@ $(BUILD_DIR)/%/build.ok : $(BUILD_DIR)/%/configure.ok
 	@cd $(BUILD_DIR)/$* && \
 	    $(if $(BUILD_CORE_$*),\
                        $(BUILD_CORE_$*),\
-                       $(BUILD_CORE)) &>$(BUILD_DIR)/$*/build.log && \
+                       $(BUILD_CORE)) >$(BUILD_DIR)/$*/build.log 2>&1 && \
 	  (echo -e "Finished build of $*: $(COLOUR_GREEN)Success$(COLOUR_NONE)" && \
 	      echo "$*: Success" > $(BUILD_DIR)/$*/build.sum && \
               date > $(BUILD_DIR)/$*/build.ok) || \
@@ -620,7 +620,7 @@ endef
 #       (2) The path to the produced sum file within the build directory.
 define run_tests =
 	cd $(BUILD_DIR)/$* && \
-	    $(MAKE) check-$(1) &>$(BUILD_DIR)/$*/check-$(1).log && \
+	    $(MAKE) check-$(1) >$(BUILD_DIR)/$*/check-$(1).log 2>&1 && \
 	  (echo -e "Finished check-$(1) of $*: $(COLOUR_GREEN)Success$(COLOUR_NONE)" && \
 	      $(call write_test_sum_file,Success,$(1),$(2))) || \
 	  (echo -e "Finished check-$(1) of $*: $(COLOUR_RED)Failed$(COLOUR_NONE)" && \
