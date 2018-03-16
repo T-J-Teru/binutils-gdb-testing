@@ -700,7 +700,7 @@ $(BUILD_DIR)/%/configure.ok : | $(BUILD_DIR)/%
 ##########################################################################
 
 define BUILD_CORE =
-	make
+	$(MAKE)
 endef
 
 .PHONY: $(BUILD_TARGETS)
