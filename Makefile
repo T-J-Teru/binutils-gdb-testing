@@ -554,7 +554,7 @@ $(CONFIGURE_TARGETS) : TARGET_CONFIGURE_% : $(BUILD_DIR)/%/configure.ok
 
 $(BUILD_DIR)/%/configure.ok : | $(BUILD_DIR)/%
 	@echo -e "Starting configure of $*"
-	@cd $(BUILD_DIR)/$* && \
+	@+cd $(BUILD_DIR)/$* && \
 	    $(if $(CONFIGURE_CORE_$*),\
                        $(CONFIGURE_CORE_$*),\
                        $(CONFIGURE_CORE)) >$(BUILD_DIR)/$*/configure.log 2>&1 && \
@@ -577,7 +577,7 @@ $(BUILD_TARGETS) : TARGET_BUILD_% : $(BUILD_DIR)/%/build.ok
 
 $(BUILD_DIR)/%/build.ok : $(BUILD_DIR)/%/configure.ok
 	@echo "Starting build of $*"
-	@cd $(BUILD_DIR)/$* && \
+	@+cd $(BUILD_DIR)/$* && \
 	    $(if $(BUILD_CORE_$*),\
                        $(BUILD_CORE_$*),\
                        $(BUILD_CORE)) >$(BUILD_DIR)/$*/build.log 2>&1 && \
@@ -630,14 +630,14 @@ endef
 .PHONY : $(CHECK_GAS_TARGETS)
 $(CHECK_GAS_TARGETS) : TARGET_CHECK_GAS_% : $(BUILD_DIR)/%/build.ok
 	@echo "Starting check-gas of $*"
-	@$(call run_tests,gas,gas/testsuite/gas.sum)
+	@+$(call run_tests,gas,gas/testsuite/gas.sum)
 
 .PHONY : $(CHECK_LD_TARGETS)
 $(CHECK_LD_TARGETS) : TARGET_CHECK_LD_% : $(BUILD_DIR)/%/build.ok
 	@echo "Starting check-ld of $*"
-	@$(call run_tests,ld,ld/ld.sum)
+	@+$(call run_tests,ld,ld/ld.sum)
 
 .PHONY : $(CHECK_BINUTILS_TARGETS)
 $(CHECK_BINUTILS_TARGETS) : TARGET_CHECK_BINUTILS_% : $(BUILD_DIR)/%/build.ok
 	@echo "Starting check-binutils of $*"
-	@$(call run_tests,binutils,binutils/binutils.sum)
+	@+$(call run_tests,binutils,binutils/binutils.sum)
