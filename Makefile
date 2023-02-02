@@ -180,27 +180,101 @@ TARGETS = \
 	microblaze-linux \
 	mingw32-pe \
 	mips-elf \
+	mips-freebsd \
+	mips-img-elf \
+	mips-img-linux \
+	mips-kfreebsd-gnu \
 	mips-linux \
+	mips-mti-elf \
+	mips-mti-linux \
+	mips-netbsd \
 	mips-rtems \
+	mips-sde-elf \
+	mips-sgi-irix5 \
 	mips-sgi-irix6 \
+	mips-vxworks \
+	mips-windiss \
 	mips64-elf \
+	mips64-freebsd \
+	mips64-img-linux \
+	mips64-kfreebsd-gnu \
 	mips64-linux \
+	mips64-mti-linux \
+	mips64-openbsd \
+	mips64el-freebsd \
+	mips64el-img-linux \
+	mips64el-kfreebsd-gnu \
+	mips64el-linux \
+	mips64el-mti-linux \
+	mips64el-openbsd \
+	mips64el-ps2-elf \
 	mips64el-st-linux-gnu \
 	mips64octeon-linux \
 	mips64orion-elf \
 	mips64vr-elf \
+	mips64vr4300-elf \
+	mips64vr4300el-elf \
 	mips64vrel-elf \
 	mipsel-elf \
+	mipsel-freebsd \
+	mipsel-img-elf \
+	mipsel-img-linux \
+	mipsel-kfreebsd-gnu \
+	mipsel-linux \
 	mipsel-linux-gnu \
+	mipsel-mti-elf \
+	mipsel-mti-linux \
+	mipsel-netbsd \
+	mipsel-ps2-elf \
+	mipsel-sde-elf \
+	mipsel-vxworks \
+	mipsisa32-elf \
 	mipsisa32-elfoabi \
+	mipsisa32-linux \
+	mipsisa32el-elf \
 	mipsisa32el-linux \
+	mipsisa32r2-elf \
+	mipsisa32r2-linux \
 	mipsisa32r2-linux-gnu \
+	mipsisa32r2el-elf \
+	mipsisa32r2el-linux \
+	mipsisa32r3-elf \
+	mipsisa32r3-linux \
+	mipsisa32r3el-elf \
+	mipsisa32r3el-linux \
+	mipsisa32r5-elf \
+	mipsisa32r5-linux \
+	mipsisa32r5el-elf \
+	mipsisa32r5el-linux \
+	mipsisa32r6-elf \
+	mipsisa32r6-linux \
+	mipsisa32r6el-elf \
+	mipsisa32r6el-linux \
+	mipsisa64-elf \
 	mipsisa64-elfoabi \
+	mipsisa64-linux \
+	mipsisa64el-elf \
+	mipsisa64el-linux \
+	mipsisa64r2-elf \
 	mipsisa64r2-linux \
 	mipsisa64r2-sde-elf \
 	mipsisa64r2el-elf \
+	mipsisa64r2el-linux \
+	mipsisa64r3-elf \
+	mipsisa64r3-linux \
+	mipsisa64r3el-elf \
+	mipsisa64r3el-linux \
+	mipsisa64r5-elf \
+	mipsisa64r5-linux \
+	mipsisa64r5el-elf \
+	mipsisa64r5el-linux \
+	mipsisa64r6-elf \
+	mipsisa64r6-linux \
+	mipsisa64r6el-elf \
+	mipsisa64r6el-linux \
 	mipsisa64sb1-elf \
-	mipsisa64sr71k-elf \
+	mipsr5900el-elf \
+	mipsr5900el-linux \
 	mipstx39-elf \
 	mmix \
 	mmix-knuth-mmixware \
@@ -332,6 +406,7 @@ BROKEN_TARGETS = \
 	m68k-openbsd \
 	mips-netbsd \
 	mips-wrs-vxworks \
+	mipsisa64sr71k-elf \
 	moxie-uclinux \
 	nvptx-none \
 	pdp11-aout \
